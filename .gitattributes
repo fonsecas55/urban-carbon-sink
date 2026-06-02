@@ -1,0 +1,6 @@
+# Shell scripts and the Dockerfile MUST be LF — they run on Linux/WSL and CRLF
+# breaks the shebang (`bad interpreter`) and here-docs. This repo is edited from
+# a Windows-synced vault, so pin the EOL explicitly.
+*.sh    text eol=lf
+Dockerfile text eol=lf
+*.yml   text eol=lf

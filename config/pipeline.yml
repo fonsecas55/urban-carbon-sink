@@ -1,0 +1,5 @@
+# Global pipeline configuration (ADR-009, ADR-012).
+window_size: 1024                 # pixels per side of the processing window
+landcover_source: dynamic_world   # dynamic_world | esa_worldcover (fallback)
+epsilon_max: xu2023               # table under config/epsilon_max/<name>.yml
+par_fraction: 0.5                 # PAR fraction of total solar radiation

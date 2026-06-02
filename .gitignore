@@ -1,0 +1,86 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Venvs
+.venv/
+venv/
+env/
+ENV/
+
+# uv / package managers
+.uv-cache/
+
+# Build artefacts
+build/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Secrets / env (never commit; .env.example is the safe template)
+.env
+.env.local
+.env.*.local
+*.pem
+service-account*.json
+# Local credential files
+API KEYS.txt
+*api*key*.txt
+gee_key.json
+*-key.json
+*_key.json
+*.iam.gserviceaccount.com.json
+
+# Internal working notes — contains local infra details (server IP, SSH user,
+# absolute paths). NEVER publish. (Already-tracked copies must be removed from
+# any public snapshot; .gitignore alone does not untrack them.)
+CLAUDE.md
+
+# Runtime / temp / outputs (COG + JSON are published to GitHub Releases)
+tmp/
+output/
+*.log
+
+# Large geodata: published via GitHub Releases, never committed
+*.tif
+*.tiff
+*.SAFE/
+*.zip
+*.dim
+*.data/
+
+# Whitelist baseline data needed for runtime fallback
+!data/sol/ghi_base.tif
+!data/fallback/*.tif
+
+# Generated extracts
+tools/literature/*.txt
+tools/relatorio_final.txt
+
+# Frontend
+frontend/node_modules/
+frontend/.next/
+frontend/dist/
+frontend/.vercel/
+gee_key.json
+CLAUDE.md
+CLAUDE.md

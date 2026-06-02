@@ -1,0 +1,9 @@
+# Global SIMI bounds for WSC normalisation (Wu 2022, eq. 3-5).
+#
+# PLACEHOLDER VALUES — deferred to Bloco 6. Production calibration = 2nd/98th
+# percentiles of SIMI over a LARGE MULTI-TEMPORAL sample (not per image). Needs
+# the GEE/CDSE archive (Bloco 6). SIMI uses [0,1] reflectance, so its theoretical
+# range is [0, 0.7071*sqrt(2)] ~= [0, 1.0]; conservative full-range placeholder
+# below lets the pipeline run end-to-end before calibration.
+simi_min: 0.0
+simi_max: 1.0

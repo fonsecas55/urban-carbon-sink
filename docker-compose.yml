@@ -1,0 +1,45 @@
+# Monthly CASA pipeline — stateless, disposable container (Bloco 7).
+#
+# Not a long-running service: the host cron invokes a one-shot run with
+#   docker compose run --rm casa run --online -r <region> -m <YYYY-MM> \
+#       --base-ghi data/sol/ghi_base.tif --out output
+# The default `command` below is a harmless --help so an accidental
+# `docker compose up` never spends GEE/CDSE quota.
+
+services:
+  casa:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: urban-carbon-sink:latest
+
+    # Credentials injected at runtime, never baked into the image.
+    env_file:
+      - .env
+    environment:
+      # The .env points GEE_SERVICE_ACCOUNT_JSON at a RELATIVE filename, which
+      # does not resolve inside the container. Override it to the read-only mount
+      # path (otherwise init_earth_engine() fails with GeeError at json.loads).
+      GEE_SERVICE_ACCOUNT_JSON: /run/secrets/gee_key.json
+      # The run wrapper overrides --user to the invoking host UID, which has no
+      # /etc/passwd entry inside the image; give it a writable HOME so any lib
+      # that touches ~ (e.g. earthengine config) does not fail.
+      HOME: /tmp
+
+    # Default non-root user for manual `docker compose run`. The cron wrapper
+    # overrides this with --user "$(id -u):$(id -g)" so bind-mounted output/ is
+    # owned by (and writable for) the host user, whatever its UID.
+    user: "1000:1000"
+
+    volumes:
+      # Secret: read-only service-account key, mounted out of the source tree.
+      - ./gee_key.json:/run/secrets/gee_key.json:ro
+      # The only writable mount: artifacts (COG + JSON) survive the container.
+      # config/ is intentionally NOT mounted — it is baked into the image so a
+      # config change is a commit + rebuild (immutability over host flexibility).
+      - ./output:/app/output
+
+    # One-shot job: never auto-restart.
+    restart: "no"
+
+    command: ["--help"]

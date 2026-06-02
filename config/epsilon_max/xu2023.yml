@@ -1,0 +1,8 @@
+# epsilon_max (g C/MJ) per canonical land-cover class.
+# Default table — Xu et al. 2023 / MOD17 BPLUT (traceable). See docs/casa-model.md sec.6.
+# non_vegetation is omitted -> defaults to 0 (masked).
+trees: 1.106              # mean BPLUT forest
+shrub_and_scrub: 1.061    # BPLUT Shrubland
+grass: 0.86               # BPLUT Grassland
+crops: 1.044              # BPLUT Cropland
+flooded_vegetation: 0.86  # BPLUT Wetland

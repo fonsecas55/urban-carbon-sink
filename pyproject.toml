@@ -1,0 +1,80 @@
+[project]
+name = "urban-carbon-sink"
+version = "0.1.0"
+description = "CO2 absorption by urban vegetation via CASA model + Sentinel-2/3 + GEE Dynamic World"
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "Diogo Fonseca", email = "fonsecacdiogo@gmail.com" }]
+keywords = ["CASA", "NPP", "remote-sensing", "Sentinel", "carbon", "urban"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: GIS",
+]
+
+dependencies = [
+    "rasterio>=1.3",
+    "numpy>=2.0",
+    "shapely>=2.0",
+    "pydantic>=2.0",
+    "pyyaml>=6.0",
+    "typer>=0.12",
+    "earthengine-api>=0.1.400",
+    "rio-cogeo>=5.3",
+    "requests>=2.31",
+    "cdsapi>=0.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+    "pypdf",
+    "types-PyYAML",
+    "requests-mock",
+    "types-requests",
+]
+
+[project.scripts]
+casa = "casa.cli:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/casa"]
+
+[tool.uv]
+package = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM", "RUF", "NPY"]
+ignore = ["E501"]
+
+[tool.ruff.lint.flake8-bugbear]
+# Typer relies on calls (typer.Option/Argument) as parameter defaults — idiomatic, not a B008 bug.
+extend-immutable-calls = ["typer.Option", "typer.Argument"]
+
+[tool.mypy]
+strict = true
+python_version = "3.12"
+files = ["src"]
+plugins = ["pydantic.mypy"]
+
+[[tool.mypy.overrides]]
+module = ["rasterio.*", "shapely.*", "ee", "pyproj.*", "affine.*", "cdsapi", "rio_cogeo.*"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers --strict-config"

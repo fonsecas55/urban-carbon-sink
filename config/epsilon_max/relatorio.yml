@@ -1,0 +1,8 @@
+# epsilon_max (g C/MJ) per canonical class — OVERRIDE to reproduce the published
+# report's figures. Origin uncertain (see CLAUDE.md "Regras Aprendidas" 2026-05-27);
+# kept only for direct comparison with Relatorio Final-P33, not as default.
+trees: 1.0
+shrub_and_scrub: 0.7
+grass: 1.04
+crops: 0.9
+flooded_vegetation: 0.86  # not specified in report; reuse wetland default

@@ -1,0 +1,19 @@
+# CASA monthly pipeline (Bloco 7) — host (WSL) cron, day 1 at 03:00 local time.
+#
+# Install on the ThinkPad WSL:
+#   crontab deploy/crontab            # replaces the user crontab, OR
+#   ( crontab -l 2>/dev/null; cat deploy/crontab ) | crontab -   # append
+#
+# Requirements:
+#   - WSL cron service running:  sudo service cron start   (or systemd-enabled)
+#   - Docker daemon up (systemd) and the user in the `docker` group
+#   - $HOME is set by cron from /etc/passwd; the path below assumes the repo is
+#     at $HOME/code/urban-carbon-sink — adjust if it lives elsewhere.
+#
+# cron runs with a minimal environment: pin the shell and a PATH that finds
+# docker/date/id (otherwise the job can fail silently at 03:00).
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# The wrapper computes the PREVIOUS month and alerts Discord on success/failure.
+0 3 1 * * "$HOME/code/urban-carbon-sink/deploy/run_monthly.sh" oeiras >> "$HOME/code/urban-carbon-sink/output/cron.log" 2>&1

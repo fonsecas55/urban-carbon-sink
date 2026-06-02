@@ -1,0 +1,12 @@
+name: oeiras
+population: 172120              # INE 2024 (municipality); matches report: x0.8917 = 153 479.40 tCO2/month
+emissions_per_capita: 0.8917   # t CO2 / inhabitant / month (Eurostat 2025, 10.7004/yr)
+cams_point: [-9.30, 38.69]     # (lon, lat) reference point for CAMS time-series
+
+# Real municipal boundary (POLYGON, lon/lat, 175 vertices), migrated from the
+# shapefile in the legacy repo. Path is resolved relative to the repo root at
+# config load time. bbox is derived from this geometry.
+geometry_path: data/geometry/oeiras.wkt
+
+# var_pct_mes: optional 12 monthly solar deviations vs annual mean (omitted ->
+# resolved from CAMS at run time, Fase 4).

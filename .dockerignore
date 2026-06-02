@@ -1,0 +1,45 @@
+# Keep the build context (and the image) small and secret-free.
+# Secrets are injected at RUNTIME (env_file + bind mounts), never baked in.
+.env
+.env.*
+gee_key.json
+*-key.json
+*.iam.gserviceaccount.com.json
+API KEYS.txt
+
+# Local virtualenv (the image builds its own with uv sync --frozen).
+.venv/
+venv/
+
+# VCS / caches / build artefacts.
+.git/
+.gitignore
+.github/
+**/__pycache__/
+*.py[cod]
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Runtime / outputs (the container writes to the bind-mounted output/).
+tmp/
+output/
+*.log
+
+# Not needed at runtime (slims the image).
+tests/
+docs/
+tools/
+frontend/
+
+# Editor / OS noise.
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

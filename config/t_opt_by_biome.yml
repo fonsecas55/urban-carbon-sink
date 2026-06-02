@@ -1,0 +1,19 @@
+# Climatological optimal growth temperature (degrees C) per canonical class.
+#
+# CASA definition (Field 1995 / Potter 1993): T_opt is the mean air temperature
+# of the month when vegetation growth (NDVI/LAI) peaks for the region — NOT the
+# current scene mean (the legacy T1_T2_CALC.py bug).
+#
+# Oeiras / Lisbon area, Mediterranean climate: green-up peaks in spring before
+# the summer drought. Regional value = Lisbon May normal (1991-2020) ~= 18.5 C
+# (IPMA). A single regional value is applied across vegetation classes: per-biome
+# differentiation is not defensible without a long NDVI/temperature series (that
+# refinement waits for the multi-temporal archive, Bloco 6).
+# Sanity: T_eps1 = 0.8 + 0.02*18.5 - 0.0005*18.5^2 = 0.999 (~1, no thermal penalty
+# at the optimum, as intended).
+# non_vegetation omitted -> default 20 (irrelevant: masked by epsilon_max = 0).
+trees: 18.5
+shrub_and_scrub: 18.5
+grass: 18.5
+crops: 18.5
+flooded_vegetation: 18.5

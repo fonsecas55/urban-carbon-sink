@@ -1,0 +1,15 @@
+# Per-class NDVI/SR bounds for FPAR rescaling (Xu 2023, eq. 3-6).
+#
+# PLACEHOLDER VALUES — deferred to Bloco 6. Production calibration = 5th/95th
+# percentiles per vegetation class over a LARGE MULTI-TEMPORAL Sentinel-2 sample
+# (NOT per image — per-image min/max breaks temporal coherence across months).
+# This needs the GEE/CDSE multi-temporal archive that Bloco 6 unlocks; it cannot
+# be done from the single local scene without reintroducing the rejected
+# per-image anti-pattern. Current values: generic NDVI 0.05/0.95 with
+# SR=(1+NDVI)/(1-NDVI), uniform across classes, so the pipeline runs end-to-end.
+# non_vegetation omitted -> 0/0 (degenerate span -> FPAR_MIN, masked downstream).
+trees:              {ndvi_min: 0.05, ndvi_max: 0.95, sr_min: 1.105, sr_max: 39.0}
+shrub_and_scrub:    {ndvi_min: 0.05, ndvi_max: 0.95, sr_min: 1.105, sr_max: 39.0}
+grass:              {ndvi_min: 0.05, ndvi_max: 0.95, sr_min: 1.105, sr_max: 39.0}
+crops:              {ndvi_min: 0.05, ndvi_max: 0.95, sr_min: 1.105, sr_max: 39.0}
+flooded_vegetation: {ndvi_min: 0.05, ndvi_max: 0.95, sr_min: 1.105, sr_max: 39.0}
