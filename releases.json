@@ -1,0 +1,114 @@
+{
+  "updated_at": "2026-06-02T14:29:15Z",
+  "latest_tag": "2025-12",
+  "releases": [
+    {
+      "tag": "2025-12",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-11",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-10",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "degraded"
+      }
+    },
+    {
+      "tag": "2025-09",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-08",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "degraded"
+      }
+    },
+    {
+      "tag": "2025-07",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-06",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-05",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-04",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-03",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    },
+    {
+      "tag": "2025-02",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "degraded"
+      }
+    },
+    {
+      "tag": "2025-01",
+      "regions": [
+        "oeiras"
+      ],
+      "data_quality": {
+        "oeiras": "ok"
+      }
+    }
+  ]
+}
