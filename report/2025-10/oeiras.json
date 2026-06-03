@@ -1,0 +1,37 @@
+{
+  "region": "oeiras",
+  "month": "2025-10",
+  "crs": "EPSG:32629",
+  "bbox_lonlat": [
+    -9.330314218630663,
+    38.672505936886296,
+    -9.211177696990688,
+    38.75197041872184
+  ],
+  "resolution_m": 10.0,
+  "width": 1040,
+  "height": 886,
+  "valid_pixels": 466534,
+  "vegetation_pixels": 120544,
+  "vegetation_area_ha": 1205.44,
+  "data_quality": "degraded",
+  "totals": {
+    "npp_c_t": 1.7575441006776882,
+    "npp_co2_t": 6.444328369151523
+  },
+  "balance": {
+    "population": 172120,
+    "emissions_per_capita_t_co2_month": 0.8917,
+    "total_emissions_t_co2": 153479.404,
+    "co2_absorbed_t": 6.444328369151523,
+    "net_co2_balance_t": 153472.95967163084,
+    "offset_fraction": 4.198822904701613e-05
+  },
+  "provenance": {
+    "model": "CASA",
+    "epsilon_max_table": "xu2023",
+    "landcover_source": "dynamic_world",
+    "generated_at": "2026-06-02T14:25:52.066563+00:00"
+  },
+  "output_cog": "oeiras_npp_co2.tif"
+}
